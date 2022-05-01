@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const router = express_1.default.Router();
+const passport_1 = __importDefault(require("passport"));
+require("../middlewares/isAuth");
+const auth = passport_1.default.authenticate("jwt", { session: false });
+const user_controllers_1 = __importDefault(require("../controllers/user.controllers"));
+router.get("/", auth, user_controllers_1.default.getAllUsers);
+router.get("/:id", user_controllers_1.default.getSpecificUser);
+router.post("/register", user_controllers_1.default.registerUser);
+router.post("/login", user_controllers_1.default.loginUser);
+router.delete("/logout", auth, user_controllers_1.default.logoutUser);
+router.post("/address", auth, user_controllers_1.default.addAddress);
+router.get("/menu/show", auth, user_controllers_1.default.showUserMenu);
+router.post("/menu/show", auth, user_controllers_1.default.showUserRequestedDish);
+router.get("/resturant/:resturantId", auth, user_controllers_1.default.showUserSpecificResturant);
+router.get("/item/:FoodId", auth, user_controllers_1.default.showUserSpecificFoodItem);
+router.post("/cart/:FoodId", auth, user_controllers_1.default.userAddToCart);
+router.get("/c/cart", auth, user_controllers_1.default.viewCartItems);
+router.delete("/cart/:foodId", auth, user_controllers_1.default.removeItemFromCart);
+router.post("/order", auth, user_controllers_1.default.userOrderFood);
+router.get("/c/order", auth, user_controllers_1.default.userGetAllOrders);
+router.get("/order/:OrderId", auth, user_controllers_1.default.userViewSpecificOrder);
+router.delete("/order/:OrderId", auth, user_controllers_1.default.userCancelSpecificOrder);
+router.patch("/restaurant/:Rid", auth, user_controllers_1.default.rateRestaurant);
+exports.default = router;
+//# sourceMappingURL=user.routes.js.map
