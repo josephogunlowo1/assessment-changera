@@ -1,6 +1,4 @@
-# Lamorak
-
-A Smart Backend for Food Delivery App
+ Backend for Food Delivery App
 
 Live for Fooood!!
 
@@ -27,30 +25,6 @@ Live for Fooood!!
 - Cancel Order
 - Coupon Codes
 - Order Stages, Types (COD, Net_Banking)
-
-## DB Migrate
-
-```sh
-npx ts-node ./node_modules/.bin/typeorm migration:generate -n finalDB
-```
-
-## ER Diagram
-
-https://drawsql.app/arkaraj/diagrams/lamorak
-
-## Postman Collections
-
-https://www.getpostman.com/collections/fc87e3353fa60710154b
-
-Full Postman Routes (Which are Tested Till Now):
-
-Routes Documentation: (Some Admin Routes are not mentioned here)
-
-https://documenter.getpostman.com/view/8802598/TzY4gFne
-
-#### Notes
-
-- Index "city, Addressid" field in Address Entity to fetch rows easily
 
 ## To Run It Locally
 
